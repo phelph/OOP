@@ -1,3 +1,6 @@
 {
-    "pylint.importStrategy": "fromEnvironment"
+    "pylint.importStrategy": "useBundled",
+    "pylint.interpreter": [
+        "/home/phelph/.pyenv/versions/oop_env/bin/python"
+    ]
 }

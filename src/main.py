@@ -1,13 +1,19 @@
 import classes
+from classes import Player, Enemy
 
 if __name__ == "__main__":
-    # Initialize the DataLoader with the CSV file path
-    data_loader = classes.DataLoader("your_data.csv")
+    phelph = Player("Philip", "Rogue")
+    # phelph.gain_exp(90)
 
-    # Load the data into a DataFrame
-    data = data_loader.load_data()
+    print(
+        f"Player {phelph.name} has {phelph.exp} exp and needs {phelph.max_exp - phelph.exp} exp to level up"
+    )
 
-    # Check if the data was successfully loaded
-    if data is not None:
-        print("Data loaded successfully:")
-        print(data.head())
+    enemy_one = Enemy("Diablo", 1)
+
+    print(f"An Enemy named {enemy_one.name} (lvl {enemy_one.lvl}) has appeared!")
+    choice = input("Would you like to attack? (y/n): ")
+    if choice == "y":
+        phelph.attack(enemy_one)
+    elif choice == "n":
+        print(f"{phelph.name} has cowardly run away!")
