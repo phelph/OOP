@@ -5,7 +5,7 @@ if __name__ == "__main__":
     print("Welcome to my little text based game!\n")
     print("At first you have to create a new character!")
 
-    PlayerCreator().create_player()
+    playwe_1 = PlayerCreator().create_player()
 
     # player_1 = Player(input("Name your Character!: "))
     # # player_1.gain_exp(90)p

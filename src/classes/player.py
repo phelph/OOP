@@ -20,23 +20,17 @@ class PlayerCreator:
             except ValueError:
                 print("THAT WASNT A NUMBER...\nPlease try again.\n")
 
+        player_class = self.playable_classes[player_class - 1]
         print(
-            f"\nA {self.playable_classes[player_class - 1]} named {player_name} has woken up in a dark room and can't remember how he got there!\n"
+            f"\nYou (A {player_class} named {player_name}) have woken up in a dark room and can't remember how you got there!\n"
         )
+
+        if player_class == "Warrior":
+            return Warrior(player_name)
 
 
 class Player:
     def __init__(self, name: str):
-        while True:
-            self.char_class = input(
-                "What is your character's class? (Warrior/Paladin/Rogue): "
-            )
-
-            if self.char_class in ["Warrior", "Paladin", "Rogue"]:
-                break
-            else:
-                print("Please enter either 'Warrior', 'Paladin', or 'Rogue'")
-
         self.name = name
         self.level = 1
         self.exp = 0
@@ -45,7 +39,7 @@ class Player:
         self.max_hp = 100
         self.gold = 0
         self.max_gold = 100
-        self.inventory = [{"name": "basic_sword", "dmg": 55}]
+        self.inventory = []
         self.equipped_item_slot = 0
 
     def show_exp(self):
@@ -78,4 +72,41 @@ class Player:
             print(f"{target.name} has {target_hp} hp left!\n")
 
 
-# class Warrior(Player):
+class Warrior(Player):
+    def __init__(self, name: str):
+        super().__init__(name)
+
+        self.weapon = {"name": "Basic Sword", "Item Power": 55}
+        self.inventory = [
+            {"name": "Shield", "Item Power": 35},
+            {"name": "Healing Potion", "Item Power": 10},
+        ]
+        if len(self.inventory) != 0:
+            self.equipped_item = self.inventory[self.equipped_item_slot]
+
+        print(
+            f'You have a {self.weapon["name"]}({self.weapon["Item Power"]} Item Power) in your hand.\n'
+        )
+
+        if len(self.inventory) == 0:
+            print("You don't have any items in your other hand or your backpack ye!")
+        else:
+            print(
+                f'In your other hand you have a {self.equipped_item["name"]}({self.weapon["Item Power"]} Item Power)\n'
+            )
+            print("After rummaging the your backpack you also find:")
+            if len(self.inventory) > 1:
+                for item in self.inventory[1:]:
+                    print(f'{item["name"]}, Item Power: {item["Item Power"]}')
+            else:
+                print("Nothing else!\n")
+
+    def print_equipped_item(self):
+        print(
+            f"You currently have equipped: {self.equipped_item['name']} ({self.equipped_item['Item Power']} Item Power)"
+        )
+
+    def print_equipped_weapon(self):
+        print(
+            f"You currently have equipped: {self.weapon['name']} ({self.weapon['Item Power']} Item Power)"
+        )
