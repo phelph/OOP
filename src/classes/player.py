@@ -21,7 +21,7 @@ class PlayerCreator:
                 print("THAT WASNT A NUMBER...\nPlease try again.\n")
 
         print(
-            f"A {self.playable_classes[player_class - 1]} named {player_name} has woken up in a dark room and can't remember how he got there!\n"
+            f"\nA {self.playable_classes[player_class - 1]} named {player_name} has woken up in a dark room and can't remember how he got there!\n"
         )
 
 
