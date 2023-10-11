@@ -1,6 +1,12 @@
+class NPC_Creator:
+    def create_npc(self, friendly: bool, type: str, lvl: int):
+        if not friendly:
+            return Enemy("Demon", lvl)
+
+
 class Enemy:
-    def __init__(self, name, lvl):
-        self.name = name
+    def __init__(self, enemy_type: str, lvl: int):
+        self.enemy_type = enemy_type
         self.lvl = lvl
         self.hp = lvl * 3 + 50
         self.dmg = self.lvl * 5 + 10

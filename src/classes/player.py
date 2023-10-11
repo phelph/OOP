@@ -77,6 +77,7 @@ class Warrior(Player):
     def __init__(self, name: str):
         super().__init__(name)
 
+        self.max_hp += 20
         self.weapon = {"name": "Basic Sword", "Item Power": 55}
         self.inventory = [
             {"name": "Shield", "Item Power": 35},
