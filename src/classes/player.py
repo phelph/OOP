@@ -41,6 +41,7 @@ class Player:
         self.max_gold = 100
         self.inventory = []
         self.equipped_item_slot = 0
+        self.weapon = {"name": "Basic Sword", "Item Power": 55}
 
     def show_exp(self):
         print(f"{self.name} has {self.exp}/{self.max_exp - self.exp} exp to level up\n")
@@ -60,9 +61,9 @@ class Player:
         print(f"{self.name} is now level {self.level}!\n")
 
     def attack(self, target):
-        dmg = self.inventory[self.equipped_item_slot].get("dmg", 0)
+        dmg = self.weapon.get("Item Power", 0)
         target_hp, gained_gold = target.get_attacked(dmg)
-        print(f"{self.name} attacks {target.name} for {dmg} damage!\n")
+        print(f"{self.name} attacks the {target.enemy_type} for {dmg} damage!\n")
 
         if target_hp <= 0:
             print(f"{self.name} killed {target.name}!\n")
