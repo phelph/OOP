@@ -14,6 +14,9 @@ class Item:
         init=False,
     )
 
+    def print_info(self) -> None:
+        print(f"This is a {self.name} with item level {self.power}!")
+
 
 @dataclass()
 class Weapon(Item):
@@ -25,8 +28,3 @@ class Weapon(Item):
 
     def get_name(self) -> str:
         return self.name
-
-    def print_info(self) -> None:
-        print(
-            f"This is a {self.rarity} {self.weapon_type} with item level {self.power}"
-        )
