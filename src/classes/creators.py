@@ -1,5 +1,8 @@
+# general imports
 from dataclasses import dataclass, field
 from random import choice
+
+# my own class imports
 from items import Weapon
 from player import Player
 

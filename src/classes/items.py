@@ -22,3 +22,6 @@ class Weapon:
 
     def __post_init__(self):
         self.name = f"{self.rarity} {self.type}"
+
+    def get_name(self):
+        return self.name
