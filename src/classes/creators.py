@@ -27,17 +27,18 @@ class Item_Creator:
         This function creates a random weapon
         """
 
-        # Weapon types and subtypes
-        TYPES = ["melee", "ranged"]
-        SUBTYPES = {"melee": ["Sword", "Axe"], "ranged": ["Bow", "Crossbow"]}
+        # Weapon class and type
+        weapon_class = ["melee", "ranged"]
+        weapon_types = {"melee": ["Sword", "Axe"], "ranged": ["Bow", "Crossbow"]}
 
         # random creation of an instance of a weapon
-        type = choice(self.TYPES)
-        subtype = choice(self.SUBTYPES[type])
+        type = choice(weapon_class)
+        weapon_type = choice(weapon_types[type])
         power = choice(range(1, 30))
         weight = choice(range(1, 10))
         rarity = self.check_rarity(power)
-        return Weapon(subtype, power, weight, rarity)
+
+        return Weapon(power, weight, rarity, weapon_type)
 
 
 class PlayerCreator:
@@ -72,4 +73,4 @@ class PlayerCreator:
 
 
 random_weapon = Item_Creator().create_weapon()
-print(random_weapon)
+random_weapon.print_info()
