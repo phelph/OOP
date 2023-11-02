@@ -13,7 +13,7 @@ class Enemy:
         self.gold = lvl * 10
         self.exp = lvl * 5 + 10
 
-    def get_attacked(self, dmg):
+    def take_dmg(self, dmg):
         self.hp -= dmg
         if self.hp <= 0:
             return self.hp, self.gold
