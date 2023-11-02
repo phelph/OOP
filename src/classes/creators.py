@@ -8,29 +8,36 @@ from player import Player
 
 
 class Item_Creator:
-    TYPES = ["melee", "ranged"]
-    SUBTYPES = {"melee": ["Sword", "Axe"], "ranged": ["Bow", "Crossbow"]}
-
-    def check_rarity(self):
-        if self.power < 10:
+    @staticmethod
+    def check_rarity(power):
+        if power < 10:
             return "Common"
 
-        elif 10 <= self.power < 20:
+        elif 10 <= power < 20:
             return "Rare"
 
-        elif 20 <= self.power < 30:
+        elif 20 <= power < 30:
             return "Magic"
 
         else:
             return "Legendary"
 
     def create_weapon(self):
+        """
+        This function creates a random weapon
+        """
+
+        # Weapon types and subtypes
+        TYPES = ["melee", "ranged"]
+        SUBTYPES = {"melee": ["Sword", "Axe"], "ranged": ["Bow", "Crossbow"]}
+
+        # random creation of an instance of a weapon
         type = choice(self.TYPES)
         subtype = choice(self.SUBTYPES[type])
-        self.power = choice(range(1, 30))
+        power = choice(range(1, 30))
         weight = choice(range(1, 10))
-        rarity = self.check_rarity()
-        return Weapon(subtype, self.power, weight, rarity)
+        rarity = self.check_rarity(power)
+        return Weapon(subtype, power, weight, rarity)
 
 
 class PlayerCreator:
