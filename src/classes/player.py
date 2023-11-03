@@ -81,30 +81,26 @@ class Warrior(Player):
         super().__init__(name)
 
         self.max_hp += 20
-        self.weapon = Weapon(5, 10, "Common", "Sword")
-        self.inventory = [
-            {"name": "Shield", "Item Power": 35},
-            {"name": "Healing Potion", "Item Power": 10},
-        ]
-        if len(self.inventory) != 0:
-            self.equipped_item = self.inventory[self.equipped_item_slot]
+        self.weapon = Weapon(5)
+        # self.inventory = [
+        #     {"name": "Shield", "Item Power": 35},
+        #     {"name": "Healing Potion", "Item Power": 10},
+        # ]
+        # if len(self.inventory) != 0:
+        #     self.equipped_item = self.inventory[self.equipped_item_slot]
 
-        print(
-            f'You have a {self.weapon["name"]}({self.weapon["Item Power"]} Item Power) in your hand.\n'
-        )
-
-        if len(self.inventory) == 0:
-            print("You don't have any items in your other hand or your backpack ye!")
-        else:
-            print(
-                f'In your other hand you have a {self.equipped_item["name"]}({self.weapon["Item Power"]} Item Power)\n'
-            )
-            print("After rummaging the your backpack you also find:")
-            if len(self.inventory) > 1:
-                for item in self.inventory[1:]:
-                    print(f'{item["name"]}, Item Power: {item["Item Power"]}')
-            else:
-                print("Nothing else!\n")
+        # if len(self.inventory) == 0:
+        #     print("You don't have any items in your other hand or your backpack ye!")
+        # else:
+        #     print(
+        #         f'In your other hand you have a {self.equipped_item["name"]}({self.weapon["Item Power"]} Item Power)\n'
+        #     )
+        #     print("After rummaging the your backpack you also find:")
+        #     if len(self.inventory) > 1:
+        #         for item in self.inventory[1:]:
+        #             print(f'{item["name"]}, Item Power: {item["Item Power"]}')
+        #     else:
+        #         print("Nothing else!\n")
 
     def print_equipped_item(self):
         print(

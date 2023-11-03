@@ -1,4 +1,3 @@
-import classes
 from classes import Player, Enemy, PlayerCreator
 
 if __name__ == "__main__":

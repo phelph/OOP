@@ -35,11 +35,12 @@ class Weapon(Item):
     WEAPON_RANGE = ["melee", "ranged"]
     WEAPON_TYPE = {"melee": ["Sword", "Axe"], "ranged": ["Bow", "Crossbow"]}
 
+    power: int
     item_subclass: str = field(default="Weapon", init=False)
 
     def __post_init__(self) -> None:
         # Basic Item info
-        self.power = choice(range(1, 31))
+        self.power += choice(range(-3, 5))
         self.weight = choice(range(1, 11))
         self.rarity = self.check_rarity(self.power)
 
