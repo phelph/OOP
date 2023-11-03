@@ -4,11 +4,6 @@ from random import choice
 
 @dataclass()
 class Item:
-    # name: str = field(default="", init=False)
-    # item_subclass: str = field(default="", init=False)
-    # power: int = field(default=0, init=False)
-    # weight: int = field(default=0, init=False)
-    # rarity: str = field(default="Common", init=False)
     durability: int = field(
         default=100,
         init=False,
