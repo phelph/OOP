@@ -4,41 +4,15 @@ from random import choice
 
 # my own class imports
 from items import Weapon
-from player import Player
+from player import Warrior
 
 
 class Item_Creator:
-    @staticmethod
-    def check_rarity(power):
-        if power < 10:
-            return "Common"
-
-        elif 10 <= power < 20:
-            return "Rare"
-
-        elif 20 <= power < 30:
-            return "Magic"
-
-        else:
-            return "Legendary"
-
     def create_weapon(self):
         """
         This function creates a random weapon
         """
-
-        # Weapon class and type
-        weapon_class = ["melee", "ranged"]
-        weapon_types = {"melee": ["Sword", "Axe"], "ranged": ["Bow", "Crossbow"]}
-
-        # random creation of an instance of a weapon
-        type = choice(weapon_class)
-        weapon_type = choice(weapon_types[type])
-        power = choice(range(1, 30))
-        weight = choice(range(1, 10))
-        rarity = self.check_rarity(power)
-
-        return Weapon(power, weight, rarity, weapon_type)
+        return Weapon()
 
 
 class PlayerCreator:
@@ -73,4 +47,4 @@ class PlayerCreator:
 
 
 random_weapon = Item_Creator().create_weapon()
-random_weapon.print_info()
+print(random_weapon.get_basic_info())

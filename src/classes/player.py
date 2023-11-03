@@ -1,3 +1,6 @@
+from items import Weapon
+
+
 class PlayerCreator:
     playable_classes = ["Warrior", "Mage"]
 
@@ -78,7 +81,7 @@ class Warrior(Player):
         super().__init__(name)
 
         self.max_hp += 20
-        self.weapon = {"name": "Basic Sword", "Item Power": 55}
+        self.weapon = Weapon(5, 10, "Common", "Sword")
         self.inventory = [
             {"name": "Shield", "Item Power": 35},
             {"name": "Healing Potion", "Item Power": 10},
