@@ -26,7 +26,7 @@ class Item:
     def print_name_power(self) -> None:
         print(f"This is a {self.name} with item level {self.power}!")
 
-    def get_basic_info(self) -> tuple:
+    def get_basic_info(self) -> tuple[str, int, int]:
         return self.name, self.power, self.durability
 
 
