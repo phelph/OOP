@@ -57,9 +57,7 @@ class PlayerCreator:
                 print("THAT WASNT A NUMBER...\nPlease try again.\n")
 
         player_class = self.PLAYABLE_CLASSES[player_class - 1]
-        print(
-            f"\nYou (A {player_class} named {player_name}) have woken up in a dark room and can't remember how you got there!\n"
-        )
+        print(f"\nCharacter successfully created")
 
         if player_class == "Warrior":
             return Warrior(player_name)
