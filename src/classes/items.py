@@ -9,15 +9,22 @@ class Item:
         init=False,
     )
 
-    @staticmethod
-    def check_rarity(power):
-        if power < 10:
+    def check_rarity(self):
+        # Check if the Item has a 'power' attribute.
+        try:
+            self.power
+        except AttributeError:
+            print("This item does not have a power attribute.")
+            return None
+
+        # Return the rarity of the Item.
+        if self.power < 10:
             return "Common"
 
-        elif 10 <= power < 20:
+        elif 10 <= self.power < 20:
             return "Rare"
 
-        elif 20 <= power < 30:
+        elif 20 <= self.power < 30:
             return "Magic"
 
         else:
@@ -32,24 +39,32 @@ class Item:
 
 @dataclass()
 class Weapon(Item):
-    WEAPON_RANGE = ["melee", "ranged"]
-    WEAPON_TYPE = {"melee": ["Sword", "Axe"], "ranged": ["Bow", "Crossbow"]}
+    """
+    Attributes that have to be given for creating a weapon:
+    power : int
+    weight : int
+    weapon_range: str
+    weapon_type: str
+
+    automaticly generated attributes:
+    durability : int
+
+    """
 
     power: int
+    weapon_range: str
+    weapon_type: str
+
+    name: str = field(default=None)
+    weight: int = field(default=10)
+
     item_subclass: str = field(default="Weapon", init=False)
 
     def __post_init__(self) -> None:
-        # Basic Item info
-        self.power += choice(range(-3, 5))
-        self.weight = choice(range(1, 11))
-        self.rarity = self.check_rarity(self.power)
-
-        # Weapon info
-        self.range = choice(self.WEAPON_RANGE)
-        self.weapon_type = choice(self.WEAPON_TYPE[self.range])
-
+        self.rarity = self.check_rarity()
         # Name
-        self.name = f"{self.rarity} {self.weapon_type}"
+        if self.name is None:
+            self.name = f"{self.rarity} {self.weapon_type}"
 
     def get_name(self) -> str:
         return self.name

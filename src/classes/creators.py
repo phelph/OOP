@@ -8,16 +8,17 @@ from player import Player, Warrior
 
 
 class Item_Creator:
-    def create_weapon(self, player: Player):
+    def random_weapon_drop(self, player: Player):
         """
         Creates a random weapon based on the provided Player's level.
 
         The weapon's power level is determined by the player's level,
         ensuring that the weapon is appropriate for the player's current progression.
 
+
         Parameters:
         - player (Player): An instance of the Player class or its subclasses.
-                           The player's level is used to influence the weapon's attributes.
+                           The player's level is used to influence the weapon's attribute and type.
 
         Returns:
         - Weapon: An instance of the Weapon class with attributes scaled to the player's level.
@@ -28,10 +29,25 @@ class Item_Creator:
         """
         try:
             level = player.level
-            return Weapon(level)
 
         except AttributeError:
             raise AttributeError("The Player class does not have a 'level' attribute.")
+
+        # set a semi random power level to scale the weapon's attributes to the player's level
+        power = level + choice(range(-3, 5))
+        weight = choice(range(1, 11))
+
+        # select which type of weapon to create based on what the player can use
+        weapon_range = choice(Player.usable_weapon_ranges)
+        weapon_type = choice(Player.usable_weapon_types.get(weapon_range))
+
+        # create the weapon and return it
+        return Weapon(
+            power=power,
+            weight=weight,
+            weapon_range=weapon_range,
+            weapon_type=weapon_type,
+        )
 
 
 class PlayerCreator:
