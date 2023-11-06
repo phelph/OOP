@@ -68,3 +68,6 @@ class Weapon(Item):
 
     def get_name(self) -> str:
         return self.name
+
+    def get_power(self) -> int:
+        return self.power

@@ -1,4 +1,5 @@
 from items import Item, Weapon
+from npcs import Enemy
 
 
 class Player:
@@ -10,10 +11,9 @@ class Player:
         self.hp: int = 100
         self.max_hp: int = 100
         self.gold: int = 0
-        self.max_gold: int = 100
 
         # Weapons and inventory
-        self.equipped_weapons: Weapon = None
+        self.equipped_weapon: Weapon = None
         self.inventory: list[Item] = []
         self.equipped_item_slot = 0
 
@@ -41,13 +41,15 @@ class Player:
         self.hp = self.max_hp
         print(f"{self.name} is now level {self.level}!\n")
 
-    def attack(self, target):
-        dmg = self.weapon.get("Item Power", 0)
-        target_hp, gained_gold = target.get_attacked(dmg)
+    def attack(self, target: Enemy):
+        dmg = self.equipped_weapon.get_power()
+
+        killed_bool, target_hp, gained_gold = target.take_dmg(dmg)
+
         print(f"{self.name} attacks the {target.enemy_type} for {dmg} damage!\n")
 
-        if target_hp <= 0:
-            print(f"{self.name} killed {target.name}!\n")
+        if killed_bool:
+            print(f"{self.name} killed {target.enemy_type}!\n")
             print(f"{self.name} gained {gained_gold} gold!\n")
             self.gain_exp(target.exp)
         else:
@@ -71,6 +73,6 @@ class Warrior(Player):
             "hybrid": ["Throwing Spear"],
         }
 
-        self.equipped_weapons: Weapon = Weapon(
+        self.equipped_weapon: Weapon = Weapon(
             name="Old Rusted Sword", power=5, weapon_range="melee", weapon_type="Sword"
         )
