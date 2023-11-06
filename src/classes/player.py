@@ -1,3 +1,4 @@
+import sys
 from items import Item, Weapon
 from npcs import Enemy
 
@@ -54,6 +55,18 @@ class Player:
             self.gain_exp(target.exp)
         else:
             print(f"{target.name} has {target_hp} hp left!\n")
+
+    def take_dmg(self, dmg: int):
+        self.hp -= dmg
+
+        if self.hp <= 0:
+            print(
+                """OH NO! /n
+                  You have died! /n
+                  Try again next time!)
+                  """
+            )
+            sys.exit(0)
 
 
 class Warrior(Player):
