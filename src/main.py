@@ -6,7 +6,7 @@ if __name__ == "__main__":
 
     player_1 = classes.PlayerCreator().create_player()
 
-    # player_1.show_exp()
+    player_1.show_exp()
 
     # player_1.take_dmg(100)
     # player_1.take_dmg(30)

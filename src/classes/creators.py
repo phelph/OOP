@@ -2,8 +2,8 @@
 from random import choice
 
 # my own class imports
-from items import Weapon
-from player import Player, Warrior
+from classes.items import Weapon
+from classes.player import Player, Warrior
 
 
 class Item_Creator:

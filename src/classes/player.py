@@ -1,6 +1,6 @@
 import sys
-from items import Item, Weapon
-from npcs import Enemy
+from classes.items import Item, Weapon
+from classes.npcs import Enemy
 
 
 class Player:
