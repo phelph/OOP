@@ -1,9 +1,12 @@
 from dataclasses import dataclass, field
-from random import choice
 
 
 @dataclass()
 class Item:
+    """
+    General class for every item in the game.
+    """
+
     durability: int = field(
         default=100,
         init=False,

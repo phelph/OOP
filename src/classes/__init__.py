@@ -1,4 +1,4 @@
-from classes.player import Player
-from classes.npcs import Enemy
-from classes.items import Item, Weapon
-from classes.creators import Item_Creator, PlayerCreator
+from .player import Player
+from .npcs import Enemy
+from .items import Item, Weapon
+from .creators import Item_Creator, PlayerCreator

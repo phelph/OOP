@@ -1,5 +1,4 @@
 # general imports
-from dataclasses import dataclass, field
 from random import choice
 
 # my own class imports
@@ -38,8 +37,8 @@ class Item_Creator:
         weight = choice(range(1, 11))
 
         # select which type of weapon to create based on what the player can use
-        weapon_range = choice(Player.usable_weapon_ranges)
-        weapon_type = choice(Player.usable_weapon_types.get(weapon_range))
+        weapon_range = choice(player.usable_weapon_ranges)
+        weapon_type = choice(player.usable_weapon_types.get(weapon_range))
 
         # create the weapon and return it
         return Weapon(
