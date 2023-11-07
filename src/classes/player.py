@@ -60,7 +60,7 @@ class Player:
         self.hp -= dmg
 
         if self.hp <= 0:
-            print("OH NO! \nYou have died! \nTry again next time!")
+            print("OH NO! \nYou have died! \nBetter luck next time!")
             sys.exit(0)
 
 
