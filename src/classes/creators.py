@@ -76,3 +76,8 @@ class PlayerCreator:
 
         if player_class == "Warrior":
             return Warrior(player_name)
+
+
+player = Warrior("phelph")
+player.take_dmg(110)
+player.take_dmg(110)
