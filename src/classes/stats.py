@@ -5,10 +5,9 @@ from dataclasses import dataclass, field
 class Stats:
     stats: dict = field(
         default_factory=lambda: {
-            "strength": 5,
-            "dexterity": 5,
-            "arcane": 5,
-            "intelligence": 5,
+            "Strength": 5,
+            "Dexterity": 5,
+            "Arcane": 5,
         }
     )
     spendable_points: int = 5
@@ -20,7 +19,7 @@ class Stats:
 
     def upgrade_stats(self) -> None:
         while self.spendable_points > 0:
-            print(f"You have {self.spendable_points} spendable stat point left.\n")
+            print(f"You have {self.spendable_points} spendable stat point(s) left.\n")
             self.print_stats()
             try:
                 choice = int(
