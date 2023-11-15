@@ -1,6 +1,7 @@
 import sys
 from classes.items import Item, Weapon
 from classes.npcs import Enemy
+from classes.stats import Stats
 
 
 class Player:
@@ -12,6 +13,7 @@ class Player:
         self.hp: int = 100
         self.max_hp: int = 100
         self.gold: int = 0
+        self.stats: Stats = Stats()
 
         # Weapons and inventory
         self.equipped_weapon: Weapon = None
