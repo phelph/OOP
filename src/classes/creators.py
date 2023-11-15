@@ -3,7 +3,7 @@ from random import choice
 
 # my own class imports
 from classes.items import Weapon
-from classes.player import Player, Warrior
+from classes.player import Player, Warrior, Mage
 
 
 class Item_Creator:
@@ -76,3 +76,6 @@ class PlayerCreator:
 
         if player_class == "Warrior":
             return Warrior(player_name)
+
+        elif player_class == "Mage":
+            return Mage(player_name)

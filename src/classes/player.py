@@ -70,9 +70,12 @@ class Warrior(Player):
     def __init__(self, name: str):
         super().__init__(name)
 
-        # Warriors have higher base hp than other classes
+        # Warriors have higher base hp and strength, but less arcane knowledge than other classes
         self.max_hp += 20
         self.hp = self.max_hp
+
+        self.stats.values["Strength"] += 5
+        self.stats.values["Arcane"] -= 3
 
         # Usable weapon ranges and types
         # Warriors dont have access to pure ranged weapons
@@ -85,4 +88,30 @@ class Warrior(Player):
 
         self.equipped_weapon: Weapon = Weapon(
             name="Old Rusted Sword", power=5, weapon_range="melee", weapon_type="Sword"
+        )
+
+
+class Mage(Player):
+    def __init__(self, name: str):
+        super().__init__(name)
+
+        # Mages have higher arcane and dex but less strength than other classes
+        self.stats.values["Strength"] -= 3
+        self.stats.values["Arcane"] += 10
+        self.stats.values["Dexterity"] += 5
+
+        # Usable weapon ranges and types
+        # Mages dont have access to pure ranged weapons
+        # The only ranged weapon they can use is the Throwing Spear which can also be used as a melee weapon
+        self.usable_weapon_ranges = [
+            "range",
+        ]
+        self.usable_weapon_types = {
+            "range": [
+                "Wand",
+            ],
+        }
+
+        self.equipped_weapon: Weapon = Weapon(
+            name="Simple Old Wand", power=5, weapon_range="range", weapon_type="Wand"
         )
