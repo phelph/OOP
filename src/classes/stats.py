@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Stats:
-    stats: dict = field(
+    values: dict = field(
         default_factory=lambda: {
             "Strength": 5,
             "Dexterity": 5,
@@ -14,7 +14,7 @@ class Stats:
 
     def print_stats(self) -> None:
         print(f"Your current stats:\n")
-        for index, (stat, value) in enumerate(self.stats.items(), start=1):
+        for index, (stat, value) in enumerate(self.values.items(), start=1):
             print(f"{index}. {stat.capitalize()}: {value}")
 
     def upgrade_stats(self) -> None:
@@ -27,7 +27,7 @@ class Stats:
                         "\nEnter the corresponding number of the stat you want to upgrade: "
                     )
                 )
-                chosen_stat = list(self.stats.keys())[choice - 1]
+                chosen_stat = list(self.values.keys())[choice - 1]
 
                 points_to_add = int(
                     input(
@@ -35,7 +35,7 @@ class Stats:
                     )
                 )
                 if 0 < points_to_add <= self.spendable_points:
-                    self.stats[chosen_stat] += points_to_add
+                    self.values[chosen_stat] += points_to_add
                     self.spendable_points -= points_to_add
                 else:
                     print("Invalid number of points. Please try again.\n")
@@ -46,6 +46,7 @@ class Stats:
         self.print_stats()
 
 
-# Example of using the class
-player_stats = Stats()
-player_stats.upgrade_stats()
+if __name__ == "__main__":
+    # Testing class
+    player_stats = Stats()
+    player_stats.upgrade_stats()
